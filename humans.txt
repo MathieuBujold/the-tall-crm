@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Mathieu Bujold
+Website: https://mathieubujold.com
+GitHub: https://github.com/MathieuBujold
+Location: Québec, Canada
+
+/* THANKS */
+Thanks to the Laravel, Livewire, and TALL Stack communities for inspiration and tools.
+
+/* SITE */
+Standards: HTML5, CSS3, ES202x
+Components: Laravel, Livewire, Tailwind, Alpine.js
