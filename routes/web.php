@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\AppPermission;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -23,10 +24,23 @@ Route::get('{locale}', function ($locale) {
 
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified', 'permission:view_dashboard'])
     ->name('dashboard');
 
+/*
+Route::get('test', function () {
+    $user = auth()->user();
+    $user->givePermission(AppPermission::VIEW_DASHBOARD);
+    return 'ok';
+})->middleware(['auth', 'verified'])->name('test');
+*/
+
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/users', function () {
+        return view('pages.users.index');
+    })->middleware('permission:edit_user')->name('users.index');
+
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
